@@ -26,7 +26,7 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument("version", type = str, help="0 for ReLU, 1 for Swish, 2 for Mish, 3 for Funnel, 4 for DyReLUA, 5 for DyReLUB")
-parser.add_argument("arch", type = str, help="0 for ResNet18, 1 for ResNet34, 2 for ResNet50")
+parser.add_argument("arch", type = str, help="0 for ResNet20, 1 for ResNet32, 2 for ResNet44")
 parser.add_argument("name", type = str, help="Name of the run")
 parser.add_argument("group", type = str, help="Name of the group")
 args = parser.parse_args()
@@ -48,7 +48,7 @@ def main():
         elif args.version == 4:
             model = resnet20(act = 'DyReLUA')
         else:
-            model = resnet18(act = 'DyReLUB')
+            model = resnet20(act = 'DyReLUB')
     elif args.arch == 1:
         if args.version == 0:
             model = resnet32(act = 'ReLU')
