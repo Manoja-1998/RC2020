@@ -113,7 +113,7 @@ def main():
                                 weight_decay=5e-4)
     lr_scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer,
                                                     milestones=[100, 150], last_epoch=0 - 1)
-    max_epoch = 200
+    max_epoch = 50
 
     
 
@@ -282,7 +282,7 @@ def save_checkpoint(state, is_best, filename='checkpoint.pth.tar'):
     artifact = wandb.Artifact('model-checkpoints', type='model')
     artifact.add_file(filename)
     wandb.save(filename)
-    run.log_artifact(artifact)
+    wandb.run.log_artifact(artifact)
     
 
 
