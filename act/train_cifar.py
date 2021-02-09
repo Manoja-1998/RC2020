@@ -25,7 +25,7 @@ import argparse
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument("version", type = str, help="0 for ReLU, 1 for Swish, 2 for Mish, 3 for Funnel, 4 for DyReLUA, 5 for DyReLUB")
+parser.add_argument("version", type = str, help="0 for ReLU, 1 for Swish, 2 for Mish, 3 for Funnel, 4 for DyReLU")
 parser.add_argument("arch", type = str, help="0 for ResNet18, 1 for ResNet34, 2 for ResNet50")
 parser.add_argument("name", type = str, help="Name of the run")
 parser.add_argument("group", type = str, help="Name of the group")
@@ -45,10 +45,8 @@ def main():
             model = resnet18(act = 'Mish', num_classes = 10)
         elif args.version == 3:
             model = resnet18(act = 'Funnel', num_classes = 10)
-        elif args.version == 4:
-            model = resnet18(act = 'DyReLUA', num_classes = 10)
         else:
-            model = resnet18(act = 'DyReLUB', num_classes = 10)
+            model = resnet18(act = 'DyReLU', num_classes = 10)
     elif args.arch == 1:
         if args.version == 0:
             model = resnet34(act = 'ReLU', num_classes = 10)
@@ -58,10 +56,8 @@ def main():
             model = resnet34(act = 'Mish', num_classes = 10)
         elif args.version == 3:
             model = resnet34(act = 'Funnel', num_classes = 10)
-        elif args.version == 4:
-            model = resnet34(act = 'DyReLUA', num_classes = 10)
         else:
-            model = resnet34(act = 'DyReLUB', num_classes = 10)
+            model = resnet34(act = 'DyReLU', num_classes = 10)
     else:
         if args.version == 0:
             model = resnet50(act = 'ReLU', num_classes = 10)
@@ -71,10 +67,8 @@ def main():
             model = resnet50(act = 'Mish', num_classes = 10)
         elif args.version == 3:
             model = resnet50(act = 'Funnel', num_classes = 10)
-        elif args.version == 4:
-            model = resnet50(act = 'DyReLUA', num_classes = 10)
         else:
-            model = resnet50(act = 'DyReLUB', num_classes = 10)
+            model = resnet50(act = 'DyReLU', num_classes = 10)
         
     wandb.watch(model)
     model = model.cuda()
