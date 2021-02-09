@@ -1,7 +1,7 @@
 best_prec1 = 0
 evaluate = True
 
-from models.act_models import *
+from models.resnet import *
 import time
 import torch
 import torch.nn.functional as F
@@ -38,43 +38,43 @@ def main():
     
     if args.arch == 0:
         if args.version == 0:
-            model = resnet18(act = 'ReLU', num_classes = 10)
+            model = resnet20(act = 'ReLU')
         elif args.version == 1:
-            model = resnet18(act = 'Swish', num_classes = 10)
+            model = resnet20(act = 'Swish')
         elif args.version == 2:
-            model = resnet18(act = 'Mish', num_classes = 10)
+            model = resnet20(act = 'Mish')
         elif args.version == 3:
-            model = resnet18(act = 'Funnel', num_classes = 10)
+            model = resnet20(act = 'Funnel')
         elif args.version == 4:
-            model = resnet18(act = 'DyReLUA', num_classes = 10)
+            model = resnet20(act = 'DyReLUA')
         else:
-            model = resnet18(act = 'DyReLUB', num_classes = 10)
+            model = resnet18(act = 'DyReLUB')
     elif args.arch == 1:
         if args.version == 0:
-            model = resnet34(act = 'ReLU', num_classes = 10)
+            model = resnet32(act = 'ReLU')
         elif args.version == 1:
-            model = resnet34(act = 'Swish', num_classes = 10)
+            model = resnet32(act = 'Swish')
         elif args.version == 2:
-            model = resnet34(act = 'Mish', num_classes = 10)
+            model = resnet32(act = 'Mish')
         elif args.version == 3:
-            model = resnet34(act = 'Funnel', num_classes = 10)
+            model = resnet32(act = 'Funnel')
         elif args.version == 4:
-            model = resnet34(act = 'DyReLUA', num_classes = 10)
+            model = resnet32(act = 'DyReLUA')
         else:
-            model = resnet34(act = 'DyReLUB', num_classes = 10)
+            model = resnet32(act = 'DyReLUB')
     else:
         if args.version == 0:
-            model = resnet50(act = 'ReLU', num_classes = 10)
+            model = resnet44(act = 'ReLU')
         elif args.version == 1:
-            model = resnet50(act = 'Swish', num_classes = 10)
+            model = resnet44(act = 'Swish')
         elif args.version == 2:
-            model = resnet50(act = 'Mish', num_classes = 10)
+            model = resnet44(act = 'Mish')
         elif args.version == 3:
-            model = resnet50(act = 'Funnel', num_classes = 10)
+            model = resnet44(act = 'Funnel')
         elif args.version == 4:
-            model = resnet50(act = 'DyReLUA', num_classes = 10)
+            model = resnet44(act = 'DyReLUA')
         else:
-            model = resnet50(act = 'DyReLUB', num_classes = 10)
+            model = resnet44(act = 'DyReLUB')
         
     wandb.watch(model)
     model = model.cuda()
