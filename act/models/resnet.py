@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.nn.init as init
 from torch.nn.parameter import Parameter
-from act_factory import *
+from .act_factory import *
 
 __all__ = ['ResNet', 'resnet20', 'resnet32', 'resnet44', 'resnet56']
 
