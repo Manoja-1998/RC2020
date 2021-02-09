@@ -25,8 +25,8 @@ import argparse
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument("version", type = str, help="0 for ReLU, 1 for Swish, 2 for Mish, 3 for Funnel, 4 for DyReLUA, 5 for DyReLUB")
-parser.add_argument("arch", type = str, help="0 for ResNet18, 1 for ResNet34, 2 for ResNet50")
+parser.add_argument("version", type = int, help="0 for ReLU, 1 for Swish, 2 for Mish, 3 for Funnel, 4 for DyReLUA, 5 for DyReLUB")
+parser.add_argument("arch", type = int, help="0 for ResNet18, 1 for ResNet34, 2 for ResNet50")
 parser.add_argument("name", type = str, help="Name of the run")
 parser.add_argument("group", type = str, help="Name of the group")
 args = parser.parse_args()
