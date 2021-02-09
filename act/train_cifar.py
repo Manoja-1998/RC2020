@@ -34,7 +34,7 @@ args = parser.parse_args()
 
 def main():
     global best_prec1, evaluate, args
-    wandb.init(project='Act-sweep', name = args.name, group = args.group)
+    wandb.init(project='RC2020-act_sweep', name = args.name, group = args.group)
     
     if args.arch == 0:
         if args.version == 0:
