@@ -27,7 +27,7 @@ def main():
     global best_prec1, evaluate, args
     wandb.init()
 
-    model = resnet20(att = wandb.config.att)
+    model = resnet20(act = wandb.config.act)
     wandb.watch(model)
     model = model.cuda()
 
