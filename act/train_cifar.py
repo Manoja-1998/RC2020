@@ -1,7 +1,7 @@
 best_prec1 = 0
 evaluate = True
 
-from models.act_models import resnet18
+from models.act_models import *
 import time
 import torch
 import torch.nn.functional as F
