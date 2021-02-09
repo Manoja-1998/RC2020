@@ -84,14 +84,10 @@ class Bottleneck(nn.Module):
             self.act1 = FReLU(planes)
             self.act2 = FReLU(planes)
             self.act2 = FReLU(planes*4)
-        elif act == 'DYReLUA':
-            self.act1 = DyReLUA(planes)
-            self.act2 = DyReLUA(planes)
-            self.act2 = DyReLUA(planes*4)
         else:
-            self.act1 = DyReLUB(planes)
-            self.act2 = DyReLUB(planes)
-            self.act2 = DyReLUB(planes*4)
+            self.act1 = DyReLU(planes)
+            self.act2 = DyReLU(planes)
+            self.act2 = DyReLU(planes*4)
         
         self.downsample = downsample
         self.stride = stride
@@ -135,10 +131,8 @@ class ResNet(nn.Module):
             self.act = Swish()
         elif act == 'Funnel':
             self.act = FReLU(64)
-        elif act == 'DYReLUA':
-            self.act = DyReLUA(64)
         else:
-            self.act = DyReLUB(64)
+            self.act = DyReLU(64)
         self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
         self.layer1 = self._make_layer(block, act, 64, layers[0])
         self.layer2 = self._make_layer(block, act, 128, layers[1], stride=2)
