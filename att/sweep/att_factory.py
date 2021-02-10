@@ -84,7 +84,7 @@ class SPBlock(nn.Module):
         self.conv3 = nn.Conv2d(midplanes, outplanes, kernel_size=1, bias=True)
         self.pool1 = nn.AdaptiveAvgPool2d((None, 1))
         self.pool2 = nn.AdaptiveAvgPool2d((1, None))
-        self.relu = nn.ReLU(inplace=False)
+        self.relu = nn.ReLU(inplace=True)
 
     def forward(self, x):
         _, _, h, w = x.size()
@@ -98,9 +98,9 @@ class SPBlock(nn.Module):
         x2 = self.bn2(x2)
         x2 = F.interpolate(x2, (h, w))
 
-        x = self.relu(x1 + x2)
-        x = torch.sigmoid(self.conv3(x))
-        return x
+        x3 = self.relu(x1 + x2)
+        x3 = torch.sigmoid(self.conv3(x3))
+        return x3
 
 
 class BasicConv(nn.Module):
