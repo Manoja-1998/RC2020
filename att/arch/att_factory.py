@@ -74,13 +74,13 @@ class GCT(nn.Module):
 
 
 class SPBlock(nn.Module):
-    def __init__(self, inplanes, outplanes, norm_layer=nn.BatchNorm2d):
+    def __init__(self, inplanes, outplanes):
         super(SPBlock, self).__init__()
         midplanes = outplanes
         self.conv1 = nn.Conv2d(inplanes, midplanes, kernel_size=(3, 1), padding=(1, 0), bias=False)
-        self.bn1 = norm_layer(midplanes)
+        self.bn1 = nn.BatchNorm2d(midplanes)
         self.conv2 = nn.Conv2d(inplanes, midplanes, kernel_size=(1, 3), padding=(0, 1), bias=False)
-        self.bn2 = norm_layer(midplanes)
+        self.bn2 = nn.BatchNorm2d(midplanes)
         self.conv3 = nn.Conv2d(midplanes, outplanes, kernel_size=1, bias=True)
         self.pool1 = nn.AdaptiveAvgPool2d((None, 1))
         self.pool2 = nn.AdaptiveAvgPool2d((1, None))
@@ -99,7 +99,7 @@ class SPBlock(nn.Module):
         x2 = F.interpolate(x2, (h, w))
 
         x3 = self.relu(x1 + x2)
-        x3 = torch.sigmoid(self.conv3(x3))
+        x3 = x * torch.sigmoid(self.conv3(x3))
         return x3
 
 
