@@ -74,7 +74,7 @@ class GCT(nn.Module):
 
 
 class SPBlock(nn.Module):
-    def __init__(self, inplanes, outplanes, norm_layer=None):
+    def __init__(self, inplanes, outplanes, norm_layer=nn.BatchNorm2d):
         super(SPBlock, self).__init__()
         midplanes = outplanes
         self.conv1 = nn.Conv2d(inplanes, midplanes, kernel_size=(3, 1), padding=(1, 0), bias=False)
