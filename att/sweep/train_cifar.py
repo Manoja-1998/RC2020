@@ -69,7 +69,7 @@ def main():
         optimizer = torch.optim.Adam(model.parameters(), 0.1)
     #lr_scheduler = torch.optim.lr_scheduler.MultiStepLR(optimizer,
     #                                                milestones=[100, 150], last_epoch=0 - 1)
-    max_epoch = 10
+    max_epoch = 50
 
     
 
