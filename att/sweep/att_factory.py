@@ -99,7 +99,7 @@ class SPBlock(nn.Module):
         x2 = F.interpolate(x2, (h, w))
 
         x3 = self.relu(x1 + x2)
-        x3 = torch.sigmoid(self.conv3(x3))
+        x3 = x * torch.sigmoid(self.conv3(x3))
         return x3
 
 
