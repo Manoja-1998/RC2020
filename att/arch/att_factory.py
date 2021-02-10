@@ -91,14 +91,12 @@ class SPBlock(nn.Module):
         x1 = self.pool1(x)
         x1 = self.conv1(x1)
         x1 = self.bn1(x1)
-        x1 = x1.expand(-1, -1, h, w)
-        #x1 = F.interpolate(x1, (h, w))
+        x1 = F.interpolate(x1, (h, w))
 
         x2 = self.pool2(x)
         x2 = self.conv2(x2)
         x2 = self.bn2(x2)
-        x2 = x2.expand(-1, -1, h, w)
-        #x2 = F.interpolate(x2, (h, w))
+        x2 = F.interpolate(x2, (h, w))
 
         x = self.relu(x1 + x2)
         x = self.conv3(x).sigmoid()
