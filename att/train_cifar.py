@@ -275,7 +275,7 @@ def save_checkpoint(state, is_best, filename='checkpoint.pth.tar'):
     artifact = wandb.Artifact('model-checkpoints', type='model')
     artifact.add_file(filename)
     wandb.save(filename)
-    run.log_artifact(artifact)
+    wandb.run.log_artifact(artifact)
 
 
 def accuracy(output, target, topk=(1,)):
