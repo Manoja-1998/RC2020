@@ -248,9 +248,8 @@ def validate(val_loader, model, criterion, epoch):
           .format(top1=top1))
 
     wandb.log({
-    'epoch': epoch,
-    'Top-1 accuracy': top1.avg,
-    'loss': losses.avg,
+    'CIFAR-10 Top-1 Acc': top1.avg,
+    'CIFAR-10 loss': losses.avg,
     })
 
     return top1.avg
