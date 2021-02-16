@@ -272,10 +272,10 @@ def save_checkpoint(state, is_best, filename='checkpoint.pth.tar'):
     Save the training model
     """
     torch.save(state, filename)
-    artifact = wandb.Artifact('model-checkpoints', type='model')
-    artifact.add_file(filename)
-    wandb.save(filename)
-    wandb.run.log_artifact(artifact)
+    #artifact = wandb.Artifact('model-checkpoints', type='model')
+    #artifact.add_file(filename)
+    #wandb.save(filename)
+    #wandb.run.log_artifact(artifact)
 
 
 def accuracy(output, target, topk=(1,)):
