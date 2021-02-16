@@ -83,15 +83,15 @@ class Bottleneck(nn.Module):
         elif act == 'Funnel':
             self.act1 = FReLU(planes)
             self.act2 = FReLU(planes)
-            self.act2 = FReLU(planes*4)
+            self.act3 = FReLU(planes*4)
         elif act == 'DYReLUA':
             self.act1 = DyReLUA(planes)
             self.act2 = DyReLUA(planes)
-            self.act2 = DyReLUA(planes*4)
+            self.act3 = DyReLUA(planes*4)
         else:
             self.act1 = DyReLUB(planes)
             self.act2 = DyReLUB(planes)
-            self.act2 = DyReLUB(planes*4)
+            self.act3 = DyReLUB(planes*4)
         
         self.downsample = downsample
         self.stride = stride
