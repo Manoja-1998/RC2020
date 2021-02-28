@@ -68,13 +68,13 @@ class Bottleneck(nn.Module):
         if att == 'Vanilla':
             self.att = None
         elif att == 'GCT':
-            self.att = GCT(planes)
+            self.att = GCT(planes*4)
         elif att == 'Strip Pool':
-            self.att = SPBlock(planes, planes)
+            self.att = SPBlock(planes*4, planes*4)
         elif att == 'ECA':
-            self.att = ECA(planes)
+            self.att = ECA(planes*4)
         elif att == 'Triplet':
-            self.att = TripletAttention(planes)
+            self.att = TripletAttention(planes*4)
         self.downsample = downsample
         self.stride = stride
 
